@@ -15,7 +15,7 @@
                     <MenuItem Header="ファイル(_F)">
                         <MenuItem Header="プロジェクトを開く" />
                         <MenuItem Header="キャラクターを追加" Command="{Binding LoadCharaCmd}"/>
-                        <MenuItem Header="背景を追加" />
+                        <MenuItem Header="背景を追加" Command="{Binding AddBackgroundCmd}"/>
                         <MenuItem Header="エフェクトを追加" />
                         <MenuItem Header="BGMを追加" />
                         <MenuItem Header="SEを追加" />

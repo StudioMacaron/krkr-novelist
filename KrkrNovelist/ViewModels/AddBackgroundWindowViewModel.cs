@@ -14,13 +14,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using Reactive.Bindings;
 using KrkrNovelist.Commands;
 
 namespace KrkrNovelist.ViewModels
 {
-    public class MainWindowViewModel
+    public class AddBackgroundWindowViewModel
     {
-        public LoadCharacterCommand LoadCharaCmd { get; set; } = new LoadCharacterCommand();
-        public AddBackgroundCommand AddBackgroundCmd { get; set; } = new AddBackgroundCommand();
+        public string BackgroundName { get; set; }
+
+        public ReactiveCommand CloseWindowCommand { get; } = new ReactiveCommand();
+
+        public AddBackgroundWindowViewModel()
+        {
+            CloseWindowCommand.Subscribe((x) =>
+                {
+                    ((Window)x).DialogResult = true;
+                    ((Window)x).Close();
+                }
+            );
+        }
+
     }
 }
