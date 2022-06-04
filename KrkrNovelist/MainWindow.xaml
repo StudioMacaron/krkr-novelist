@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KrkrNovelist"
         mc:Ignorable="d"
-        Title="MainWindow" Height="576" Width="1024"
+        Title="KrkrNovelist" Height="576" Width="1024"
         ResizeMode="NoResize">
 
     <Grid>
