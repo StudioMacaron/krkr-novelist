@@ -1,0 +1,165 @@
+﻿<Window x:Class="KrkrNovelist.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KrkrNovelist"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="576" Width="1024"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <StackPanel>
+            <DockPanel>
+                <Menu DockPanel.Dock="Top" BorderBrush="LightGray" BorderThickness="0,0,0,1">
+                    <MenuItem Header="ファイル(_F)">
+                        <MenuItem Header="プロジェクトを開く" />
+                        <MenuItem Header="キャラクターを追加" Command="{Binding LoadCharaCmd}"/>
+                        <MenuItem Header="背景を追加" />
+                        <MenuItem Header="エフェクトを追加" />
+                        <MenuItem Header="BGMを追加" />
+                        <MenuItem Header="SEを追加" />
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" BorderBrush="DarkGray" BorderThickness="0,0,1,0">
+                    <Grid Grid.Column="0">
+                        <Canvas Height="403" Background="Gray" Margin="31,50,108,105"/>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="1" Background="White" Margin="10,10,10,10">
+                    <StackPanel>
+                        <Expander Header="キャラクター" IsEnabled="True" FontSize="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <Thumb DragStarted="Thumb_DragStarted">
+                                            <Thumb.Template>
+                                                <ControlTemplate>
+                                                    <Border x:Name="Thumb_Border" BorderBrush="Red" BorderThickness="0">
+                                                        <Image Source="Resources/komari.png"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                            <Thumb.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem Header="左に配置"/>
+                                                    <MenuItem Header="中央に配置"/>
+                                                    <MenuItem Header="右に配置"/>
+                                                </ContextMenu>
+                                            </Thumb.ContextMenu>
+                                        </Thumb>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <Thumb DragStarted="Thumb_DragStarted">
+                                            <Thumb.Template>
+                                                <ControlTemplate>
+                                                    <Border x:Name="Thumb_Border" BorderBrush="Red" BorderThickness="0">
+                                                        <Image Source="Resources/komari.png"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Expander>
+                        <Expander Header="背景" IsEnabled="True" FontSize="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Expander>
+                        <Expander Header="エフェクト" IsEnabled="True" FontSize="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Expander>
+                        <Expander Header="BGM" IsEnabled="True" FontSize="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Expander>
+                        <Expander Header="SE" IsEnabled="True" FontSize="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="項目１"/>
+                                        <TextBlock Text="項目２"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Expander>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
