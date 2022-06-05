@@ -1,4 +1,4 @@
-﻿<Thumb x:Class="KrkrNovelist.CharacterThumb"
+﻿<Thumb x:Class="KrkrNovelist.BackgroundThumb"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,18 +9,17 @@
     <Thumb.Template>
         <ControlTemplate>
             <StackPanel>
-                <Border x:Name="Character_Thumb_Border" BorderBrush="Red" BorderThickness="0">
+                <Border x:Name="Background_Thumb_Border" BorderBrush="Red" BorderThickness="0">
                     <Image Source="{Binding Path.Value}" Height="150" />
                 </Border>
-                <TextBlock Text="{Binding DisplayName.Value}" HorizontalAlignment="Center" FontSize="13" Margin="0,10" />
+                <TextBlock Text="{Binding Name.Value}" HorizontalAlignment="Center" FontSize="13" Margin="0,10" />
             </StackPanel>
         </ControlTemplate>
     </Thumb.Template>
     <Thumb.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="左に配置"/>
-            <MenuItem Header="中央に配置"/>
-            <MenuItem Header="右に配置"/>
+            <MenuItem Header="背景に設定"/>
         </ContextMenu>
     </Thumb.ContextMenu>
 </Thumb>
+

@@ -42,10 +42,16 @@ namespace KrkrNovelist.ViewModels
 
         public ReactiveCollection<CharacterThumbViewModel> RightCharacterThumbs { get; set; }
 
+        public ReactiveCollection<BackgroundThumbViewModel> BackgroundThumbs { get; set; } = new ReactiveCollection<BackgroundThumbViewModel>();
+
+        public ReactiveCollection<BackgroundThumbViewModel> LeftBackgroundThumbs { get; set; }
+
+        public ReactiveCollection<BackgroundThumbViewModel> RightBackgroundThumbs { get; set; }
+
         public MainWindowViewModel()
         {
             this.AddCharaCmd = new AddCharacterCommand(this);
-            this.AddBackgroundCmd = new AddBackgroundCommand();
+            this.AddBackgroundCmd = new AddBackgroundCommand(this);
             this.AddBGMCmd = new AddBGMCommand();
             this.AddSECmd = new AddSECommand();
 
@@ -56,6 +62,14 @@ namespace KrkrNovelist.ViewModels
             this.RightCharacterThumbs = this.CharacterThumbs.ToObservable()
                                                             .Where((chara, index) => index % 2 != 0)
                                                             .ToReactiveCollection();
+
+            this.LeftBackgroundThumbs = this.BackgroundThumbs.ToObservable()
+                                                             .Where((background, index) => index % 2 == 0)
+                                                             .ToReactiveCollection();
+
+            this.RightBackgroundThumbs = this.BackgroundThumbs.ToObservable()
+                                                              .Where((background, index) => index % 2 != 0)
+                                                              .ToReactiveCollection();
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

@@ -74,14 +74,24 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid Grid.Column="0" HorizontalAlignment="Center">
                                         <StackPanel>
-                                            <TextBlock Text="項目１"/>
-                                            <TextBlock Text="項目２"/>
+                                            <ItemsControl ItemsSource="{Binding LeftBackgroundThumbs}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <local:BackgroundThumb DataContext="{Binding Path=Instance}" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </StackPanel>
                                     </Grid>
                                     <Grid Grid.Column="1" HorizontalAlignment="Center">
                                         <StackPanel>
-                                            <TextBlock Text="項目１"/>
-                                            <TextBlock Text="項目２"/>
+                                            <ItemsControl ItemsSource="{Binding RightBackgroundThumbs}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <local:BackgroundThumb DataContext="{Binding Path=Instance}" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </StackPanel>
                                     </Grid>
                                 </Grid>

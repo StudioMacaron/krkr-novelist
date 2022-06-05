@@ -15,6 +15,13 @@ namespace KrkrNovelist.Commands
     {
         public event EventHandler CanExecuteChanged;
 
+        private MainWindowViewModel _vm;
+
+        public AddBackgroundCommand(MainWindowViewModel vm)
+        {
+            this._vm = vm;
+        }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -41,6 +48,18 @@ namespace KrkrNovelist.Commands
                         Name = vm.Name.Value
                     };
                     BackgroundMap.Add(bg);
+
+                    this._vm.BackgroundThumbs.Add(new BackgroundThumbViewModel(bg));
+
+                    if (this._vm.BackgroundThumbs.Count % 2 == 0)
+                    {
+                        this._vm.RightBackgroundThumbs.Add(new BackgroundThumbViewModel(bg));
+                    }
+                    else
+                    {
+                        this._vm.LeftBackgroundThumbs.Add(new BackgroundThumbViewModel(bg));
+                    }
+
                     MessageBox.Show(vm.Name.Value + " を追加しました。");
                 }
             }
