@@ -27,17 +27,17 @@ using KrkrNovelist.Commands;
 
 namespace KrkrNovelist.ViewModels
 {
-    public class AddBackgroundWindowViewModel : INotifyPropertyChanged
+    public class InputNameWindowViewModel : INotifyPropertyChanged
     {
         private readonly CompositeDisposable _cd = new CompositeDisposable();
 
-        public ReactiveProperty<string> BackgroundName { get; set; }
+        public ReactiveProperty<string> Name { get; set; }
 
         public ReactiveCommand CloseWindowCommand { get; } = new ReactiveCommand();
 
-        public AddBackgroundWindowViewModel()
+        public InputNameWindowViewModel()
         {
-            this.BackgroundName = new ReactiveProperty<string>().AddTo(this._cd);
+            this.Name = new ReactiveProperty<string>().AddTo(this._cd);
             this.CloseWindowCommand.Subscribe((x) =>
                 {
                     ((Window)x).DialogResult = true;

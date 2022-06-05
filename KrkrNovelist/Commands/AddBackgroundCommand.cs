@@ -27,8 +27,8 @@ namespace KrkrNovelist.Commands
 
             if (dialog.ShowDialog() == true)
             {
-                AddBackgroundWindowViewModel vm = new AddBackgroundWindowViewModel();
-                Window window = new AddBackgroundWindow()
+                InputNameWindowViewModel vm = new InputNameWindowViewModel();
+                Window window = new InputNameWindow()
                 {
                     DataContext = vm
                 };
@@ -38,10 +38,10 @@ namespace KrkrNovelist.Commands
                     Background bg = new Background()
                     {
                         Path = dialog.FileName,
-                        Name = vm.BackgroundName.Value
+                        Name = vm.Name.Value
                     };
                     BackgroundMap.Add(bg);
-                    MessageBox.Show(vm.BackgroundName.Value + " を追加しました。");
+                    MessageBox.Show(vm.Name.Value + " を追加しました。");
                 }
             }
         }

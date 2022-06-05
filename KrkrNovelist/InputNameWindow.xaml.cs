@@ -16,14 +16,14 @@ using KrkrNovelist.ViewModels;
 namespace KrkrNovelist
 {
     /// <summary>
-    /// AddBackgroundWindow.xaml の相互作用ロジック
+    /// InputNameWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class AddBackgroundWindow : Window
+    public partial class InputNameWindow : Window
     {
-        public AddBackgroundWindow()
+        public InputNameWindow()
         {
             InitializeComponent();
-            this.DataContext = new AddBackgroundWindowViewModel();
+            this.DataContext = new InputNameWindowViewModel();
         }
     }
 }
