@@ -21,6 +21,9 @@ namespace KrkrNovelist.ViewModels
     public class MainWindowViewModel
     {
         public LoadCharacterCommand LoadCharaCmd { get; set; } = new LoadCharacterCommand();
+
         public AddBackgroundCommand AddBackgroundCmd { get; set; } = new AddBackgroundCommand();
+
+        public AddBGMCommand AddBGMCmd { get; set; } = new AddBGMCommand();
     }
 }
