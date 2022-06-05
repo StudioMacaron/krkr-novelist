@@ -21,6 +21,7 @@ using Reactive.Bindings;
 using Reactive.Bindings.Helpers;
 using Reactive.Bindings.Extensions;
 using KrkrNovelist.Commands;
+using KrkrNovelist.IO;
 using KrkrNovelist.Models;
 using KrkrNovelist.ViewModels;
 
@@ -39,6 +40,12 @@ namespace KrkrNovelist.ViewModels
         public ICommand OpenProjectCmd { get; set; }
 
         public ICommand SaveProjectCmd { get; set; }
+
+        public ICommand SaveProjectAsNewNameCmd { get; set; }
+
+        public ReactiveProperty<string> Title { get; set; }
+
+        public ReactiveProperty<ProjectIO> Project { get; set; } = new ReactiveProperty<ProjectIO>();
 
         public ReactiveCollection<CharacterThumbViewModel> CharacterThumbs { get; set; } = new ReactiveCollection<CharacterThumbViewModel>();
 
@@ -61,7 +68,8 @@ namespace KrkrNovelist.ViewModels
             this.AddBGMCmd = new AddBGMCommand();
             this.AddSECmd = new AddSECommand();
             this.OpenProjectCmd = new OpenProjectCommand(this);
-            this.SaveProjectCmd = new SaveProjectCommand(this);
+            this.SaveProjectCmd = new SaveProjectCommand(this, true);
+            this.SaveProjectAsNewNameCmd = new SaveProjectCommand(this);
 
             this.LeftCharacterThumbs = this.CharacterThumbs.ToObservable()
                                                            .Where((chara, index) => index % 2 == 0)
@@ -78,6 +86,8 @@ namespace KrkrNovelist.ViewModels
             this.RightBackgroundThumbs = this.BackgroundThumbs.ToObservable()
                                                               .Where((background, index) => index % 2 != 0)
                                                               .ToReactiveCollection();
+
+            this.Title = this.Project.Select(s => "KrkrNovelist " + s?.Path).ToReactiveProperty();
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

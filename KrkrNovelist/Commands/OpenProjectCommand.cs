@@ -33,8 +33,8 @@ namespace KrkrNovelist.Commands
 
             if (dialog.ShowDialog() == true)
             {
-                ProjectIO projectIO = new ProjectIO(dialog.FileName);
-                projectIO.Read();
+                this._vm.Project.Value = new ProjectIO(dialog.FileName);
+                this._vm.Project.Value.Read();
                 
                 this._vm.CharacterThumbs.Clear();
                 this._vm.BackgroundThumbs.Clear();

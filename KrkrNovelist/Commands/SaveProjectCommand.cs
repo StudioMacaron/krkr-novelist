@@ -18,9 +18,12 @@ namespace KrkrNovelist.Commands
 
         private MainWindowViewModel _vm;
 
-        public SaveProjectCommand(MainWindowViewModel vm)
+        private bool _overwrite;
+
+        public SaveProjectCommand(MainWindowViewModel vm, bool overwrite = false)
         {
             this._vm = vm;
+            this._overwrite = overwrite;
         }
 
         public bool CanExecute(object parameter)
@@ -30,13 +33,20 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
+            if (this._overwrite && this._vm.Project != null)
+            {
+                this._vm.Project.Value.Write(new PageStorage());
+                MessageBox.Show("保存しました。");
+                return;
+            }
+
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "KrkrNovelistプロジェクト|*.knp";
 
             if (dialog.ShowDialog() == true)
             {
-                ProjectIO projectIO = new ProjectIO(dialog.FileName);
-                projectIO.Write(new PageStorage()); // TODO : PageStorageの実装
+                this._vm.Project.Value = new ProjectIO(dialog.FileName);
+                this._vm.Project.Value.Write(new PageStorage()); // TODO : PageStorageの実装
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KrkrNovelist.Pages
 {
-    class PageStorage
+    public class PageStorage
     {
         public List<Page> pages = new List<Page>();
 

@@ -7,7 +7,7 @@ using KrkrNovelist.Models;
 
 namespace KrkrNovelist.Pages
 {
-    class Page
+    public class Page
     {
         public string Scenario { get; set; }
 

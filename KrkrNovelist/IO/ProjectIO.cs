@@ -9,7 +9,7 @@ using KrkrNovelist.Pages;
 
 namespace KrkrNovelist.IO
 {
-    class ProjectIO
+    public class ProjectIO
     {
         public string Path { get; set; }
 
