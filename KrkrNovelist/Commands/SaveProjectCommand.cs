@@ -33,7 +33,7 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
-            if (this._overwrite && this._vm.Project != null)
+            if (this._overwrite && this._vm.Project.Value != null)
             {
                 this._vm.Project.Value.Write(new PageStorage());
                 return;
