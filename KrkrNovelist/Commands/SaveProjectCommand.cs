@@ -36,7 +36,6 @@ namespace KrkrNovelist.Commands
             if (this._overwrite && this._vm.Project != null)
             {
                 this._vm.Project.Value.Write(new PageStorage());
-                MessageBox.Show("保存しました。");
                 return;
             }
 
