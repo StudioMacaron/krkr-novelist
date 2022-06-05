@@ -124,7 +124,7 @@ namespace KrkrNovelist.IO
             }
             string json = JsonConvert.SerializeObject(jsonData, Formatting.Indented);
 
-            Debug.Print(json);
+            File.WriteAllText(this.Path, json);
         }
     }
 }

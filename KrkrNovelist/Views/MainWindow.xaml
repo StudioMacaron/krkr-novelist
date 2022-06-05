@@ -20,7 +20,7 @@
                         <MenuItem Header="BGMを追加" Command="{Binding AddBGMCmd}" />
                         <MenuItem Header="SEを追加" Command="{Binding AddSECmd}" />
                         <Separator />
-                        <MenuItem Header="プロジェクトを上書き保存(_S)" />
+                        <MenuItem Header="プロジェクトを保存(_S)" Command="{Binding SaveProjectCmd}" />
                         <MenuItem Header="プロジェクトを別名で保存(_A)" />
                         <MenuItem Header="シナリオファイルに書き出し" />
                     </MenuItem>

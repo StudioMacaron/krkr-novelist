@@ -36,6 +36,8 @@ namespace KrkrNovelist.ViewModels
 
         public ICommand AddSECmd { get; set; }
 
+        public ICommand SaveProjectCmd { get; set; }
+
         public ReactiveCollection<CharacterThumbViewModel> CharacterThumbs { get; set; } = new ReactiveCollection<CharacterThumbViewModel>();
 
         public ReactiveCollection<CharacterThumbViewModel> LeftCharacterThumbs { get; set; }
@@ -56,6 +58,7 @@ namespace KrkrNovelist.ViewModels
             this.AddBackgroundCmd = new AddBackgroundCommand(this);
             this.AddBGMCmd = new AddBGMCommand();
             this.AddSECmd = new AddSECommand();
+            this.SaveProjectCmd = new SaveProjectCommand(this);
 
             this.LeftCharacterThumbs = this.CharacterThumbs.ToObservable()
                                                            .Where((chara, index) => index % 2 == 0)
