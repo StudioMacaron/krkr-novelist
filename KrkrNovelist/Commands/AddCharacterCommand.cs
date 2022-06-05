@@ -63,17 +63,13 @@ namespace KrkrNovelist.Commands
                         }
 
                         MessageBox.Show(chara.Name + " を追加しました。");
-                        return;
                     }
                     else
                     {
                         MessageBox.Show("既にキャラクターが追加されています。");
-                        return;
                     }
                 }
             }
-
-            MessageBox.Show("不明なエラーが発生しました。");
         }
     }
 }
