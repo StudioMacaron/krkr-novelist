@@ -13,21 +13,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using System.Reactive.Disposables;
 using Reactive.Bindings;
+using Reactive.Bindings.Extensions;
 using KrkrNovelist.Commands;
+
 
 namespace KrkrNovelist.ViewModels
 {
-    public class AddBackgroundWindowViewModel
+    public class AddBackgroundWindowViewModel : INotifyPropertyChanged
     {
-        public string BackgroundName { get; set; }
+        private readonly CompositeDisposable _cd = new CompositeDisposable();
+
+        public ReactiveProperty<string> BackgroundName { get; set; }
 
         public ReactiveCommand CloseWindowCommand { get; } = new ReactiveCommand();
 
         public AddBackgroundWindowViewModel()
         {
-            CloseWindowCommand.Subscribe((x) =>
+            this.BackgroundName = new ReactiveProperty<string>().AddTo(this._cd);
+            this.CloseWindowCommand.Subscribe((x) =>
                 {
                     ((Window)x).DialogResult = true;
                     ((Window)x).Close();
@@ -35,5 +46,8 @@ namespace KrkrNovelist.ViewModels
             );
         }
 
+        public void Dispose() => this._cd.Dispose();
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
     }
 }

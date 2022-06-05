@@ -38,10 +38,10 @@ namespace KrkrNovelist.Commands
                     Background bg = new Background()
                     {
                         Path = dialog.FileName,
-                        Name = vm.BackgroundName
+                        Name = vm.BackgroundName.Value
                     };
                     BackgroundMap.Add(bg);
-                    MessageBox.Show(vm.BackgroundName + " を追加しました。");
+                    MessageBox.Show(vm.BackgroundName.Value + " を追加しました。");
                 }
             }
         }
