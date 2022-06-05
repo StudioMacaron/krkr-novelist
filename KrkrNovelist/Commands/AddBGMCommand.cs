@@ -7,6 +7,7 @@ using KrkrNovelist.IO;
 using KrkrNovelist.Models;
 using KrkrNovelist.Pages;
 using KrkrNovelist.Map;
+using KrkrNovelist.Views;
 using KrkrNovelist.ViewModels;
 
 namespace KrkrNovelist.Commands

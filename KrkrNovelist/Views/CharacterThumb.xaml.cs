@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,35 +18,35 @@ using KrkrNovelist.Commands;
 using KrkrNovelist.ViewModels;
 using KrkrNovelist.Models;
 
-namespace KrkrNovelist
+namespace KrkrNovelist.Views
 {
     /// <summary>
-    /// BackgroundThumb.xaml の相互作用ロジック
+    /// CharacterThumb.xaml の相互作用ロジック
     /// </summary>
-    public partial class BackgroundThumb : Thumb
+    public partial class CharacterThumb : Thumb
     {
-        public BackgroundThumb()
+        public CharacterThumb()
         {
             InitializeComponent();
         }
 
-        private Thumb _selectedBackgroundThumb;
+        private Thumb _selectedCharacterThumb;
 
         private void Thumb_DragStarted(object sender, DragStartedEventArgs e)
         {
             var thumb = sender as Thumb;
             if (thumb != null)
             {
-                var border = thumb.Template.FindName("Background_Thumb_Border", thumb) as Border;
+                var border = thumb.Template.FindName("Character_Thumb_Border", thumb) as Border;
                 if (border != null)
                 {
-                    if (_selectedBackgroundThumb != null)
+                    if (_selectedCharacterThumb != null)
                     {
-                        var selectedBorder = _selectedBackgroundThumb.Template.FindName("Background_Thumb_Border", _selectedBackgroundThumb) as Border;
+                        var selectedBorder = _selectedCharacterThumb.Template.FindName("Character_Thumb_Border", _selectedCharacterThumb) as Border;
                         selectedBorder.BorderThickness = new Thickness(0);
                     }
                     border.BorderThickness = new Thickness(1);
-                    _selectedBackgroundThumb = thumb;
+                    _selectedCharacterThumb = thumb;
                 }
             }
         }

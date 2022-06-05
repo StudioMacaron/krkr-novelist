@@ -17,7 +17,7 @@ using System.Diagnostics;
 using KrkrNovelist.Commands;
 using KrkrNovelist.ViewModels;
 
-namespace KrkrNovelist
+namespace KrkrNovelist.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

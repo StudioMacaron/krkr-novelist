@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KrkrNovelist.ViewModels;
 
-namespace KrkrNovelist
+namespace KrkrNovelist.Views
 {
     /// <summary>
     /// InputNameWindow.xaml の相互作用ロジック
