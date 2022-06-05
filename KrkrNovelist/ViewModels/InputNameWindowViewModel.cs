@@ -24,7 +24,6 @@ using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using KrkrNovelist.Commands;
 
-
 namespace KrkrNovelist.ViewModels
 {
     public class InputNameWindowViewModel : INotifyPropertyChanged
