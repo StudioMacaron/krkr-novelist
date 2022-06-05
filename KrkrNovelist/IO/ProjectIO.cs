@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
@@ -20,12 +21,12 @@ namespace KrkrNovelist.IO
         public PageStorage Read()
         {
             PageStorage storage = new PageStorage();
-            dynamic jsonData;
+            JObject jsonData;
 
             using (var sr = new StreamReader(this.Path, System.Text.Encoding.UTF8))
             {
                 var json = sr.ReadToEnd();
-                jsonData = JsonConvert.DeserializeObject<dynamic>(json);
+                jsonData = JsonConvert.DeserializeObject<JObject>(json);
             }
 
             CharacterMap.Clear();
@@ -33,49 +34,43 @@ namespace KrkrNovelist.IO
             BGMMap.Clear();
             SEMap.Clear();
 
-            foreach (var header in jsonData.headers)
+            foreach (JObject character in (JArray)jsonData["headers"]["character_list"])
             {
-                foreach (var character in header.character_list)
+                CharacterMap.Add(new Character()
                 {
-                    CharacterMap.Add(new Character()
-                    {
-                        Path = character.path,
-                        Name = character.name,
-                        Expression = character.expression
-                    });
-                }
-
-                foreach (var background in header.background_list)
-                {
-                    BackgroundMap.Add(new Background()
-                    {
-                        Path = background.path,
-                        Name = background.name
-                    });
-                }
-
-                foreach (var bgm in header.bgm_list)
-                {
-                    BGMMap.Add(new BGM()
-                    {
-                        Path = bgm.path,
-                        Name = bgm.name
-                    });
-                }
-
-                foreach (var se in header.se_list)
-                {
-                    SEMap.Add(new SE()
-                    {
-                        Path = se.path,
-                        Name = se.name
-                    });
-                }
+                    Path = (string)character["path"],
+                    Name = (string)character["name"],
+                    Expression = (string)character["expression"]
+                });
             }
 
-            foreach (var page in jsonData.pages)
+            foreach (JObject background in (JArray)jsonData["headers"]["background_list"])
             {
-                
+                BackgroundMap.Add(new Background()
+                {
+                    Path = (string)background["path"],
+                    Name = (string)background["name"]
+                });
+            }
+
+
+            foreach (JObject bgm in (JArray)jsonData["headers"]["bgm_list"])
+            {
+                BGMMap.Add(new BGM()
+                {
+                    Path = (string)bgm["path"],
+                    Name = (string)bgm["name"]
+                });
+            }
+
+
+            foreach (JObject se in (JArray)jsonData["headers"]["se_list"])
+            {
+                SEMap.Add(new SE()
+                {
+                    Path = (string)se["path"],
+                    Name = (string)se["name"]
+                });
             }
 
             return storage;
@@ -84,11 +79,11 @@ namespace KrkrNovelist.IO
         public void Write(PageStorage storage)
         {
             Dictionary<string, dynamic> jsonData = new Dictionary<string, dynamic>();
-            jsonData["header"] = new Dictionary<string, dynamic>();
-            jsonData["header"]["character_list"] = new List<Dictionary<string, string>>();
-            jsonData["header"]["background_list"] = new List<Dictionary<string, string>>();
-            jsonData["header"]["bgm_list"] = new List<Dictionary<string, string>>();
-            jsonData["header"]["se_list"] = new List<Dictionary<string, string>>();
+            jsonData["headers"] = new Dictionary<string, dynamic>();
+            jsonData["headers"]["character_list"] = new List<Dictionary<string, string>>();
+            jsonData["headers"]["background_list"] = new List<Dictionary<string, string>>();
+            jsonData["headers"]["bgm_list"] = new List<Dictionary<string, string>>();
+            jsonData["headers"]["se_list"] = new List<Dictionary<string, string>>();
 
             foreach (Character chara in CharacterMap.GetAll())
             {
@@ -96,7 +91,7 @@ namespace KrkrNovelist.IO
                 charaDict.Add("path", chara.Path);
                 charaDict.Add("name", chara.Name);
                 charaDict.Add("expression", chara.Expression);
-                jsonData["header"]["character_list"].Add(charaDict);
+                jsonData["headers"]["character_list"].Add(charaDict);
             }
 
             foreach (Background background in BackgroundMap.GetAll())
@@ -104,7 +99,7 @@ namespace KrkrNovelist.IO
                 Dictionary<string, string> backgroundDict = new Dictionary<string, string>();
                 backgroundDict.Add("path", background.Path);
                 backgroundDict.Add("name", background.Name);
-                jsonData["header"]["background_list"].Add(backgroundDict);
+                jsonData["headers"]["background_list"].Add(backgroundDict);
             }
 
             foreach (BGM bgm in BGMMap.GetAll())
@@ -112,7 +107,7 @@ namespace KrkrNovelist.IO
                 Dictionary<string, string> bgmDict = new Dictionary<string, string>();
                 bgmDict.Add("path", bgm.Path);
                 bgmDict.Add("name", bgm.Name);
-                jsonData["header"]["bgm_list"].Add(bgmDict);
+                jsonData["headers"]["bgm_list"].Add(bgmDict);
             }
 
             foreach (SE se in SEMap.GetAll())
@@ -120,7 +115,7 @@ namespace KrkrNovelist.IO
                 Dictionary<string, string> seDict = new Dictionary<string, string>();
                 seDict.Add("path", se.Path);
                 seDict.Add("name", se.Name);
-                jsonData["header"]["se_list"].Add(seDict);
+                jsonData["headers"]["se_list"].Add(seDict);
             }
             string json = JsonConvert.SerializeObject(jsonData, Formatting.Indented);
 
