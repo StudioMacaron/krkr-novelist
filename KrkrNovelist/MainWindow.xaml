@@ -13,12 +13,16 @@
             <DockPanel>
                 <Menu DockPanel.Dock="Top" BorderBrush="LightGray" BorderThickness="0,0,0,1">
                     <MenuItem Header="ファイル(_F)">
-                        <MenuItem Header="プロジェクトを開く" />
+                        <MenuItem Header="プロジェクトを開く(_O)" />
                         <MenuItem Header="キャラクターを追加" Command="{Binding AddCharaCmd}" />
                         <MenuItem Header="背景を追加" Command="{Binding AddBackgroundCmd}" />
                         <MenuItem Header="エフェクトを追加" />
                         <MenuItem Header="BGMを追加" Command="{Binding AddBGMCmd}" />
                         <MenuItem Header="SEを追加" Command="{Binding AddSECmd}" />
+                        <Separator />
+                        <MenuItem Header="プロジェクトを上書き保存(_S)" />
+                        <MenuItem Header="プロジェクトを別名で保存(_A)" />
+                        <MenuItem Header="シナリオファイルに書き出し" />
                     </MenuItem>
                 </Menu>
             </DockPanel>
