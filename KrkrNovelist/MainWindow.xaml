@@ -18,7 +18,7 @@
                         <MenuItem Header="背景を追加" Command="{Binding AddBackgroundCmd}" />
                         <MenuItem Header="エフェクトを追加" />
                         <MenuItem Header="BGMを追加" Command="{Binding AddBGMCmd}" />
-                        <MenuItem Header="SEを追加" />
+                        <MenuItem Header="SEを追加" Command="{Binding AddSECmd}" />
                     </MenuItem>
                 </Menu>
             </DockPanel>

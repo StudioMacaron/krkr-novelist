@@ -25,5 +25,7 @@ namespace KrkrNovelist.ViewModels
         public AddBackgroundCommand AddBackgroundCmd { get; set; } = new AddBackgroundCommand();
 
         public AddBGMCommand AddBGMCmd { get; set; } = new AddBGMCommand();
+
+        public AddSECommand AddSECmd { get; set; } = new AddSECommand();
     }
 }
