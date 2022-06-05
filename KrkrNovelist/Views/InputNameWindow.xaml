@@ -10,7 +10,7 @@
         <StackPanel>
             <TextBlock Text="名前を入力してください。" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,5"/>
             <TextBox x:Name="name" Text="{Binding Name.Value}" Width="300" Margin="0,5" />
-            <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" Width="300" Content="Close" />
+            <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" Width="300" Content="Close" Margin="0,15" />
         </StackPanel>
     </Grid>
 </Window>
