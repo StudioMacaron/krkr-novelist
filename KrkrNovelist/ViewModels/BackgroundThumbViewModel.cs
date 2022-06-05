@@ -30,6 +30,8 @@ namespace KrkrNovelist.ViewModels
 {
     public class BackgroundThumbViewModel : INotifyPropertyChanged
     {
+        public ICommand SetBackgroundCmd { get; set; }
+
         private readonly CompositeDisposable _cd = new CompositeDisposable();
 
         public ReactiveProperty<Background> Background { get; set; }
@@ -42,12 +44,16 @@ namespace KrkrNovelist.ViewModels
 
         public BackgroundThumbViewModel Instance { get; }
 
-        public BackgroundThumbViewModel(Background background)
+        public MainWindowViewModel OwnerViewModel { get; }
+
+        public BackgroundThumbViewModel(MainWindowViewModel owner, Background background)
         {
             this.Background = new ReactiveProperty<Background>(background).AddTo(this._cd);
             this.Path = this.Background.Select(background => background.Path).ToReadOnlyReactiveProperty().AddTo(this._cd);
             this.Name = this.Background.Select(background => background.Name).ToReadOnlyReactiveProperty().AddTo(this._cd);
             this.Instance = this;
+            this.OwnerViewModel = owner;
+            this.SetBackgroundCmd = new SetBackgroundCommand(this.OwnerViewModel, background);
         }
 
         public void Dispose() => this._cd.Dispose();

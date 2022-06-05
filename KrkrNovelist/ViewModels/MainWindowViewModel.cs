@@ -48,6 +48,8 @@ namespace KrkrNovelist.ViewModels
 
         public ReactiveCollection<BackgroundThumbViewModel> RightBackgroundThumbs { get; set; }
 
+        public ReactiveProperty<string> Background { get; set; } = new ReactiveProperty<string>("Resources\\default_background.png");
+
         public MainWindowViewModel()
         {
             this.AddCharaCmd = new AddCharacterCommand(this);

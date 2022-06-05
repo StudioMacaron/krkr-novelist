@@ -49,15 +49,15 @@ namespace KrkrNovelist.Commands
                     };
                     BackgroundMap.Add(bg);
 
-                    this._vm.BackgroundThumbs.Add(new BackgroundThumbViewModel(bg));
+                    this._vm.BackgroundThumbs.Add(new BackgroundThumbViewModel(this._vm, bg));
 
                     if (this._vm.BackgroundThumbs.Count % 2 == 0)
                     {
-                        this._vm.RightBackgroundThumbs.Add(new BackgroundThumbViewModel(bg));
+                        this._vm.RightBackgroundThumbs.Add(new BackgroundThumbViewModel(this._vm, bg));
                     }
                     else
                     {
-                        this._vm.LeftBackgroundThumbs.Add(new BackgroundThumbViewModel(bg));
+                        this._vm.LeftBackgroundThumbs.Add(new BackgroundThumbViewModel(this._vm, bg));
                     }
 
                     MessageBox.Show(vm.Name.Value + " を追加しました。");

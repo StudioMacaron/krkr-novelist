@@ -30,7 +30,11 @@
 
                 <Border Grid.Column="0" BorderBrush="DarkGray" BorderThickness="0,0,1,0">
                     <Grid Grid.Column="0">
-                        <Canvas Height="403" Background="Gray" Margin="31,50,108,105"/>
+                        <Canvas Width="640" Height="360">
+                            <Canvas.Background>
+                                <ImageBrush ImageSource="{Binding Background.Value, TargetNullValue={x:Null}}" />
+                            </Canvas.Background>
+                        </Canvas>
                     </Grid>
                 </Border>
                 <Grid Grid.Column="1" Background="White" Height="500" Margin="10,10,10,10">
