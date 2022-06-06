@@ -10,6 +10,7 @@
     <None Remove="Resources\default_background.png" />
     <None Remove="Resources\komari.png" />
     <None Remove="Resources\manekineko.png" />
+    <None Remove="Resources\Transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,5 +21,6 @@
   <ItemGroup>
     <Resource Include="Resources\default_background.png" />
     <Resource Include="Resources\komari.png" />
+    <Resource Include="Resources\transparent.png" />
   </ItemGroup>
 </Project>

@@ -45,14 +45,14 @@ namespace KrkrNovelist.Commands
 
                 foreach (Character chara in CharacterMap.GetAll())
                 {
-                    this._vm.CharacterThumbs.Add(new CharacterThumbViewModel(chara));
+                    this._vm.CharacterThumbs.Add(new CharacterThumbViewModel(this._vm, chara));
                     if (this._vm.CharacterThumbs.Count % 2 == 0)
                     {
-                        this._vm.RightCharacterThumbs.Add(new CharacterThumbViewModel(chara));
+                        this._vm.RightCharacterThumbs.Add(new CharacterThumbViewModel(this._vm, chara));
                     }
                     else
                     {
-                        this._vm.LeftCharacterThumbs.Add(new CharacterThumbViewModel(chara));
+                        this._vm.LeftCharacterThumbs.Add(new CharacterThumbViewModel(this._vm, chara));
                     }
                 }
 

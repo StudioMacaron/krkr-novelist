@@ -59,7 +59,13 @@ namespace KrkrNovelist.ViewModels
 
         public ReactiveCollection<BackgroundThumbViewModel> RightBackgroundThumbs { get; set; }
 
-        public ReactiveProperty<string> Background { get; set; } = new ReactiveProperty<string>("Resources\\default_background.png");
+        public ReactiveProperty<string> Background { get; set; } = new ReactiveProperty<string>("\\Resources\\default_background.png");
+
+        public ReactiveProperty<string> LeftCharacterPath { get; set; } = new ReactiveProperty<string>("\\Resources\\transparent.png");
+
+        public ReactiveProperty<string> CenterCharacterPath { get; set; } = new ReactiveProperty<string>("\\Resources\\transparent.png");
+
+        public ReactiveProperty<string> RightCharacterPath { get; set; } = new ReactiveProperty<string>("\\Resources\\transparent.png");
 
         public MainWindowViewModel()
         {

@@ -18,9 +18,9 @@
     </Thumb.Template>
     <Thumb.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="左に配置"/>
-            <MenuItem Header="中央に配置"/>
-            <MenuItem Header="右に配置"/>
+            <MenuItem Header="左に配置" Command="{Binding SetCharacterCmd}" CommandParameter="LEFT" />
+            <MenuItem Header="中央に配置" Command="{Binding SetCharacterCmd}" CommandParameter="CENTER" />
+            <MenuItem Header="右に配置" Command="{Binding SetCharacterCmd}" CommandParameter="RIGHT" />
         </ContextMenu>
     </Thumb.ContextMenu>
 </Thumb>

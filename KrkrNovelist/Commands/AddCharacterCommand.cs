@@ -52,14 +52,14 @@ namespace KrkrNovelist.Commands
                     
                     if (CharacterMap.Add(chara))
                     {
-                        this._vm.CharacterThumbs.Add(new CharacterThumbViewModel(chara));
+                        this._vm.CharacterThumbs.Add(new CharacterThumbViewModel(this._vm, chara));
                         if (this._vm.CharacterThumbs.Count % 2 == 0)
                         {
-                            this._vm.RightCharacterThumbs.Add(new CharacterThumbViewModel(chara));
+                            this._vm.RightCharacterThumbs.Add(new CharacterThumbViewModel(this._vm, chara));
                         }
                         else
                         {
-                            this._vm.LeftCharacterThumbs.Add(new CharacterThumbViewModel(chara));
+                            this._vm.LeftCharacterThumbs.Add(new CharacterThumbViewModel(this._vm, chara));
                         }
 
                         MessageBox.Show(chara.Name + " を追加しました。");

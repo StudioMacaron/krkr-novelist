@@ -44,7 +44,11 @@ namespace KrkrNovelist.ViewModels
 
         public CharacterThumbViewModel Instance { get; }
 
-        public CharacterThumbViewModel(Character chara)
+        public MainWindowViewModel OwnerViewModel { get; }
+
+        public ICommand SetCharacterCmd { get; set; }
+
+        public CharacterThumbViewModel(MainWindowViewModel owner, Character chara)
         {
             this.Character = new ReactiveProperty<Character>(chara).AddTo(this._cd);
             this.Path = this.Character.Select(chara => chara.Path).ToReadOnlyReactiveProperty().AddTo(this._cd);
@@ -54,6 +58,8 @@ namespace KrkrNovelist.ViewModels
                 this.Expression,
                 (name, expression) => name + "（" + expression + "）").ToReadOnlyReactiveProperty().AddTo(this._cd);
             this.Instance = this;
+            this.OwnerViewModel = owner;
+            this.SetCharacterCmd = new SetCharacterCommand(owner, chara);
         }
 
         public void Dispose() => this._cd.Dispose();
