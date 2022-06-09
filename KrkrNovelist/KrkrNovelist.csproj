@@ -10,7 +10,12 @@
     <None Remove="Resources\default_background.png" />
     <None Remove="Resources\komari.png" />
     <None Remove="Resources\manekineko.png" />
+    <None Remove="Resources\message.png" />
     <None Remove="Resources\Transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\message.png" />
   </ItemGroup>
 
   <ItemGroup>
