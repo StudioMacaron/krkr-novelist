@@ -9,6 +9,9 @@
         ResizeMode="NoResize">
 
     <Grid>
+        <Grid.InputBindings>
+            <KeyBinding Gesture="Ctrl+S" Command="{Binding SaveProjectCmd}" />
+        </Grid.InputBindings>
         <StackPanel>
             <DockPanel>
                 <Menu DockPanel.Dock="Top" BorderBrush="LightGray" BorderThickness="0,0,0,1">
