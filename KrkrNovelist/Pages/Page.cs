@@ -13,15 +13,9 @@ namespace KrkrNovelist.Pages
 
         public Character LeftCharacter { get; set; }
 
-        public string LeftCharacterPosition { get; set; }
-
         public Character CenterCharacter { get; set; }
 
-        public string CenterCharacterPosition { get; set; }
-
         public Character RightCharacter { get; set; }
-
-        public string RightCharacterPosition { get; set; }
 
         public bool HasChangedBackground { get; set; }
 

@@ -59,13 +59,7 @@ namespace KrkrNovelist.ViewModels
 
         public ReactiveCollection<BackgroundThumbViewModel> RightBackgroundThumbs { get; set; }
 
-        public ReactiveProperty<string> Background { get; set; } = new ReactiveProperty<string>("\\Resources\\default_background.png");
-
-        public ReactiveProperty<string> LeftCharacterPath { get; set; } = new ReactiveProperty<string>("\\Resources\\transparent.png");
-
-        public ReactiveProperty<string> CenterCharacterPath { get; set; } = new ReactiveProperty<string>("\\Resources\\transparent.png");
-
-        public ReactiveProperty<string> RightCharacterPath { get; set; } = new ReactiveProperty<string>("\\Resources\\transparent.png");
+        public ReactiveProperty<Pages.Page> Page { get; set; }
 
         public MainWindowViewModel()
         {
@@ -94,6 +88,31 @@ namespace KrkrNovelist.ViewModels
                                                               .ToReactiveCollection();
 
             this.Title = this.Project.Select(s => "KrkrNovelist " + s?.Path).ToReactiveProperty();
+
+            Background defaultBackground = new Background()
+            {
+                Name = "Default Background",
+                Path = "\\Resources\\default_background.png"
+            };
+
+            Character defaultCharacter = new Character()
+            {
+                Name = "Default Chracter",
+                Path = "\\Resources\\transparent.png",
+                Expression = ""
+            };
+
+            Pages.Page page = new Pages.Page()
+            {
+                Scenario = "",
+                LeftCharacter = defaultCharacter,
+                CenterCharacter = defaultCharacter,
+                RightCharacter = defaultCharacter,
+                HasChangedBackground = true,
+                Background = defaultBackground,
+                HasChangedBGM = false
+            };
+            this.Page = new ReactiveProperty<Pages.Page>(page);
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

@@ -8,6 +8,7 @@ using KrkrNovelist.Models;
 using KrkrNovelist.Pages;
 using KrkrNovelist.Map;
 using KrkrNovelist.ViewModels;
+
 namespace KrkrNovelist.Commands
 {
     class SetCharacterCommand : ICommand
@@ -31,19 +32,34 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
+            Page page = new Page()
+            {
+                Scenario = this._vm.Page.Value.Scenario,
+                HasChangedBackground = this._vm.Page.Value.HasChangedBackground,
+                HasChangedBGM = this._vm.Page.Value.HasChangedBGM,
+                LeftCharacter = this._vm.Page.Value.LeftCharacter,
+                CenterCharacter = this._vm.Page.Value.CenterCharacter,
+                RightCharacter = this._vm.Page.Value.RightCharacter,
+                Background = this._vm.Page.Value.Background,
+                BGM = this._vm.Page.Value.BGM,
+                SE = this._vm.Page.Value.SE
+            };
+
             SetCharacterParameter position = (SetCharacterParameter)Enum.Parse(typeof(SetCharacterParameter), (string)parameter, true);
             switch (position)
             {
                 case SetCharacterParameter.LEFT:
-                    this._vm.LeftCharacterPath.Value = this._chara.Path;
+                    page.LeftCharacter = this._chara;
                     break;
                 case SetCharacterParameter.CENTER:
-                    this._vm.CenterCharacterPath.Value = this._chara.Path;
+                    page.CenterCharacter = this._chara;
                     break;
                 case SetCharacterParameter.RIGHT:
-                    this._vm.RightCharacterPath.Value = this._chara.Path;
+                    page.RightCharacter = this._chara;
                     break;
             }
+
+            this._vm.Page.Value = page;
         }
     }
 }

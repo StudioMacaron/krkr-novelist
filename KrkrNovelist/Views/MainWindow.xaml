@@ -36,11 +36,11 @@
                     <Grid Grid.Column="0">
                         <Canvas Width="640" Height="360">
                             <Canvas.Background>
-                                <ImageBrush ImageSource="{Binding Background.Value, TargetNullValue={x:Null}}" />
+                                <ImageBrush ImageSource="{Binding Page.Value.Background.Path, TargetNullValue={x:Null}}" />
                             </Canvas.Background>
-                            <Image Source="{Binding LeftCharacterPath.Value}" Width="200" MaxHeight="360" Canvas.Left="50"/>
-                            <Image Source="{Binding CenterCharacterPath.Value}" Width="200" MaxHeight="360" Canvas.Left="220" />
-                            <Image Source="{Binding RightCharacterPath.Value}" Width="200" MaxHeight="360" Canvas.Left="390" />
+                            <Image Source="{Binding Page.Value.LeftCharacter.Path}" Width="200" MaxHeight="360" Canvas.Left="50"/>
+                            <Image Source="{Binding Page.Value.CenterCharacter.Path}" Width="200" MaxHeight="360" Canvas.Left="220" />
+                            <Image Source="{Binding Page.Value.RightCharacter.Path}" Width="200" MaxHeight="360" Canvas.Left="390" />
                             <Image Source="/Resources/message.png" Width="640" Canvas.Top="230"  />
                             <TextBox
                                 Name="scenario"

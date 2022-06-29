@@ -8,6 +8,7 @@ using KrkrNovelist.Models;
 using KrkrNovelist.Pages;
 using KrkrNovelist.Map;
 using KrkrNovelist.ViewModels;
+
 namespace KrkrNovelist.Commands
 {
     class SetBackgroundCommand : ICommand
@@ -31,7 +32,20 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
-            this._vm.Background.Value = this._bg.Path;
+            Page page = new Page()
+            {
+                Scenario = this._vm.Page.Value.Scenario,
+                HasChangedBackground = this._vm.Page.Value.HasChangedBackground,
+                HasChangedBGM = this._vm.Page.Value.HasChangedBGM,
+                LeftCharacter = this._vm.Page.Value.LeftCharacter,
+                CenterCharacter = this._vm.Page.Value.CenterCharacter,
+                RightCharacter = this._vm.Page.Value.RightCharacter,
+                Background = this._bg,
+                BGM = this._vm.Page.Value.BGM,
+                SE = this._vm.Page.Value.SE
+            };
+            page.Background = this._bg;
+            this._vm.Page.Value = page;
         }
     }
 }
