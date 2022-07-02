@@ -10,14 +10,24 @@ namespace KrkrNovelist.Pages
     {
         public List<Page> pages = new List<Page>();
 
+        public int Count
+        {
+            get { return pages.Count; }
+        }
+
         public void Add(Page page)
         {
             this.pages.Add(page);
         }
 
+        public void Insert(int index, Page page)
+        {
+            this.pages.Insert(index, page);
+        }
+
         public Page Get(int index)
         {
-            if (index < pages.Count)
+            if (0 <= index && index < pages.Count)
             {
                 return this.pages[index];
             }

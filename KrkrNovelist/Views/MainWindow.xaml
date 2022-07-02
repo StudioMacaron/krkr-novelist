@@ -47,6 +47,7 @@
                             <Image Source="/Resources/message.png" Width="640" Canvas.Top="230"  />
                             <TextBox
                                 Name="scenario"
+                                Text="{Binding Page.Value.Scenario}"
                                 TextWrapping="Wrap"
                                 AcceptsReturn="True"
                                 VerticalScrollBarVisibility="Hidden"
@@ -58,6 +59,9 @@
                                 Background="Transparent"
                             />
                         </Canvas>
+                        <Button Content="前のページ" HorizontalAlignment="Left" Margin="290,463,0,0" VerticalAlignment="Top" Width="60" Command="{Binding OperatePageCmd}" CommandParameter="MOVE_PREV"/>
+                        <Button Content="次のページ" HorizontalAlignment="Left" Margin="390,463,0,0" VerticalAlignment="Top" Width="60" Command="{Binding OperatePageCmd}" CommandParameter="MOVE_NEXT"/>
+                        <Button Content="追加" HorizontalAlignment="Left" Margin="350,463,0,0" VerticalAlignment="Top" Width="40" Command="{Binding OperatePageCmd}" CommandParameter="INSERT"/>
                     </Grid>
                 </Border>
                 <Grid Grid.Column="1" Background="White" Height="500" Margin="10,10,10,10">
