@@ -118,7 +118,8 @@ namespace KrkrNovelist.ViewModels
                 HasChangedBGM = false
             };
             this.Page = new ReactiveProperty<Pages.Page>(page);
-            this.Paginator = new Pages.Paginator(Page);
+            this.Paginator = new Pages.Paginator(this.Page);
+            this.Page.Subscribe((page) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, page));
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

@@ -60,8 +60,6 @@ namespace KrkrNovelist.Commands
             }
 
             this._vm.Page.Value = page;
-            // ストレージと整合性を合わせる
-            this._vm.Paginator.Storage.pages[this._vm.Paginator.CurrentIndex] = page;
         }
     }
 }

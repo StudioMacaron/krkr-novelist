@@ -34,5 +34,10 @@ namespace KrkrNovelist.Pages
 
             return null;
         }
+
+        public void Set(int index, Page page)
+        {
+            this.pages[index] = page;
+        }
     }
 }
