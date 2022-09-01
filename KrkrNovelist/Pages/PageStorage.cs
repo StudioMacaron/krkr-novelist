@@ -39,5 +39,11 @@ namespace KrkrNovelist.Pages
         {
             this.pages[index] = page;
         }
+
+        public void Delete(int index)
+        {
+            this.pages.RemoveAt(index);
+        }
+
     }
 }

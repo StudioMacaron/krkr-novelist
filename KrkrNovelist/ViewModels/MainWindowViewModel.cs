@@ -45,6 +45,8 @@ namespace KrkrNovelist.ViewModels
 
         public ICommand OperatePageCmd { get; set; }
 
+        public ICommand DeletePageCmd { get; set; }
+
         public ReactiveProperty<string> Title { get; set; }
 
         public ReactiveProperty<ProjectIO> Project { get; set; } = new ReactiveProperty<ProjectIO>();
@@ -75,6 +77,7 @@ namespace KrkrNovelist.ViewModels
             this.SaveProjectCmd = new SaveProjectCommand(this, true);
             this.SaveProjectAsNewNameCmd = new SaveProjectCommand(this);
             this.OperatePageCmd = new OperatePageCommand(this);
+            this.DeletePageCmd = new DeletePageCommand(this);
 
             this.LeftCharacterThumbs = this.CharacterThumbs.ToObservable()
                                                            .Where((chara, index) => index % 2 == 0)
@@ -118,7 +121,7 @@ namespace KrkrNovelist.ViewModels
                 HasChangedBGM = false
             };
             this.Page = new ReactiveProperty<Pages.Page>(page);
-            this.Paginator = new Pages.Paginator(this.Page);
+            this.Paginator = new Pages.Paginator(this.Page, page);
             this.Page.Subscribe((page) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, page));
         }
 

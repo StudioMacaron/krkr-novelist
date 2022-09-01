@@ -18,13 +18,15 @@ namespace KrkrNovelist.Pages
         }
 
         private ReactiveProperty<Page> _page;
+        private Page _defaultPage;
 
         public PageStorage Storage = new PageStorage();
 
-        public Paginator(ReactiveProperty<Page> page)
+        public Paginator(ReactiveProperty<Page> page, Page defaultPage)
         {
             _currentIndex = 0;
             _page = page;
+            _defaultPage = defaultPage;
             Storage.Add(page.Value);
         }
 
@@ -62,6 +64,20 @@ namespace KrkrNovelist.Pages
             _currentIndex++;
             Storage.Insert(_currentIndex, newPage);
             _page.Value = newPage;
+        }
+
+        public void Delete()
+        {
+            Storage.Delete(_currentIndex);
+            if (_currentIndex == 0)
+            {
+                Storage.Add(_defaultPage);
+            }
+            else
+            {
+                _currentIndex--;
+            }
+            _page.Value = Storage.Get(_currentIndex);
         }
     }
 }
