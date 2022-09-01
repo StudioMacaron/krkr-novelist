@@ -8,7 +8,7 @@ namespace KrkrNovelist.Pages
 {
     public class PageStorage
     {
-        public List<Page> pages = new List<Page>();
+        private List<Page> pages = new List<Page>();
 
         public int Count
         {
