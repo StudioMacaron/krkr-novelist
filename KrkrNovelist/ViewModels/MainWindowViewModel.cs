@@ -43,7 +43,9 @@ namespace KrkrNovelist.ViewModels
 
         public ICommand SaveProjectAsNewNameCmd { get; set; }
 
-        public ICommand OperatePageCmd { get; set; }
+        public ICommand MovePageCmd { get; set; }
+
+        public ICommand InsertPageCmd { get; set; }
 
         public ICommand DeletePageCmd { get; set; }
 
@@ -76,7 +78,8 @@ namespace KrkrNovelist.ViewModels
             this.OpenProjectCmd = new OpenProjectCommand(this);
             this.SaveProjectCmd = new SaveProjectCommand(this, true);
             this.SaveProjectAsNewNameCmd = new SaveProjectCommand(this);
-            this.OperatePageCmd = new OperatePageCommand(this);
+            this.MovePageCmd = new MovePageCommand(this);
+            this.InsertPageCmd = new InsertPageCommand(this);
             this.DeletePageCmd = new DeletePageCommand(this);
 
             this.LeftCharacterThumbs = this.CharacterThumbs.ToObservable()

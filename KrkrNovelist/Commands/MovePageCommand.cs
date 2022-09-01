@@ -11,13 +11,13 @@ using KrkrNovelist.ViewModels;
 
 namespace KrkrNovelist.Commands
 {
-    class OperatePageCommand : ICommand
+    class MovePageCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
         private MainWindowViewModel _vm;
 
-        public OperatePageCommand(MainWindowViewModel vm)
+        public MovePageCommand(MainWindowViewModel vm)
         {
             this._vm = vm;
         }
@@ -29,24 +29,21 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
-            OperatePageParameter kind = (OperatePageParameter)Enum.Parse(typeof(OperatePageParameter), (string)parameter, true);
+            MovePageParameter kind = (MovePageParameter)Enum.Parse(typeof(MovePageParameter), (string)parameter, true);
             switch (kind)
             {
-                case OperatePageParameter.MOVE_PREV:
+                case MovePageParameter.PREV:
                     this._vm.Paginator.MovePrev();
                     break;
-                case OperatePageParameter.MOVE_NEXT:
+                case MovePageParameter.NEXT:
                     this._vm.Paginator.MoveNext();
-                    break;
-                case OperatePageParameter.INSERT:
-                    this._vm.Paginator.Insert();
                     break;
             }
         }
     }
 }
 
-public enum OperatePageParameter
+public enum MovePageParameter
 {
-    MOVE_PREV, MOVE_NEXT, INSERT
+    PREV, NEXT
 }
