@@ -65,7 +65,7 @@ namespace KrkrNovelist.ViewModels
 
         public ReactiveCollection<BackgroundThumbViewModel> RightBackgroundThumbs { get; set; }
 
-        public ReactiveProperty<Pages.Page> Page { get; set; }
+        public PageViewModel Page { get; set; }
 
         public Pages.Paginator Paginator;
 
@@ -123,9 +123,10 @@ namespace KrkrNovelist.ViewModels
                 Background = defaultBackground,
                 HasChangedBGM = false
             };
-            this.Page = new ReactiveProperty<Pages.Page>(page);
-            this.Paginator = new Pages.Paginator(this.Page, page);
-            this.Page.Subscribe((page) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, page));
+
+            this.Page = new PageViewModel();
+            this.Paginator = new Pages.Paginator(this.Page.Data, page);
+            this.Page.Data.Subscribe((x) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, x));
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

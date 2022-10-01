@@ -34,18 +34,18 @@ namespace KrkrNovelist.Commands
         {
             Page page = new Page()
             {
-                Scenario = this._vm.Page.Value.Scenario,
-                HasChangedBackground = this._vm.Page.Value.HasChangedBackground,
-                HasChangedBGM = this._vm.Page.Value.HasChangedBGM,
-                LeftCharacter = this._vm.Page.Value.LeftCharacter,
-                CenterCharacter = this._vm.Page.Value.CenterCharacter,
-                RightCharacter = this._vm.Page.Value.RightCharacter,
+                Scenario = this._vm.Page.Data.Value.Scenario,
+                HasChangedBackground = this._vm.Page.Data.Value.HasChangedBackground,
+                HasChangedBGM = this._vm.Page.Data.Value.HasChangedBGM,
+                LeftCharacter = this._vm.Page.Data.Value.LeftCharacter,
+                CenterCharacter = this._vm.Page.Data.Value.CenterCharacter,
+                RightCharacter = this._vm.Page.Data.Value.RightCharacter,
                 Background = this._bg,
-                BGM = this._vm.Page.Value.BGM,
-                SE = this._vm.Page.Value.SE
+                BGM = this._vm.Page.Data.Value.BGM,
+                SE = this._vm.Page.Data.Value.SE
             };
             page.Background = this._bg;
-            this._vm.Page.Value = page;
+            this._vm.Page.Data.Value = page;
         }
     }
 }

@@ -34,15 +34,15 @@ namespace KrkrNovelist.Commands
         {
             Page page = new Page()
             {
-                Scenario = this._vm.Page.Value.Scenario,
-                HasChangedBackground = this._vm.Page.Value.HasChangedBackground,
-                HasChangedBGM = this._vm.Page.Value.HasChangedBGM,
-                LeftCharacter = this._vm.Page.Value.LeftCharacter,
-                CenterCharacter = this._vm.Page.Value.CenterCharacter,
-                RightCharacter = this._vm.Page.Value.RightCharacter,
-                Background = this._vm.Page.Value.Background,
-                BGM = this._vm.Page.Value.BGM,
-                SE = this._vm.Page.Value.SE
+                Scenario = this._vm.Page.Data.Value.Scenario,
+                HasChangedBackground = this._vm.Page.Data.Value.HasChangedBackground,
+                HasChangedBGM = this._vm.Page.Data.Value.HasChangedBGM,
+                LeftCharacter = this._vm.Page.Data.Value.LeftCharacter,
+                CenterCharacter = this._vm.Page.Data.Value.CenterCharacter,
+                RightCharacter = this._vm.Page.Data.Value.RightCharacter,
+                Background = this._vm.Page.Data.Value.Background,
+                BGM = this._vm.Page.Data.Value.BGM,
+                SE = this._vm.Page.Data.Value.SE
             };
 
             SetCharacterParameter position = (SetCharacterParameter)Enum.Parse(typeof(SetCharacterParameter), (string)parameter, true);
@@ -59,7 +59,7 @@ namespace KrkrNovelist.Commands
                     break;
             }
 
-            this._vm.Page.Value = page;
+            this._vm.Page.Data.Value = page;
         }
     }
 }
