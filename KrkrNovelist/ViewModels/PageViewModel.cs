@@ -32,30 +32,8 @@ namespace KrkrNovelist.ViewModels
     {
         public ReactiveProperty<Pages.Page> Data { get; set; } 
 
-        public PageViewModel()
+        public PageViewModel(Pages.Page defaultPage)
         {
-            Background defaultBackground = new Background()
-            {
-                Name = "Default Background",
-                Path = "\\Resources\\default_background.png"
-            };
-            Character defaultCharacter = new Character()
-            {
-                Name = "Default Chracter",
-                Path = "\\Resources\\transparent.png",
-                Expression = ""
-            };
-            Pages.Page defaultPage = new Pages.Page()
-            {
-                Scenario = "",
-                LeftCharacter = defaultCharacter,
-                CenterCharacter = defaultCharacter,
-                RightCharacter = defaultCharacter,
-                HasChangedBackground = true,
-                Background = defaultBackground,
-                HasChangedBGM = false
-            };
-
             this.Data = new ReactiveProperty<Pages.Page>(defaultPage);
         }
 

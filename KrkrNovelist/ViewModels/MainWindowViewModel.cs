@@ -113,7 +113,7 @@ namespace KrkrNovelist.ViewModels
                 Expression = ""
             };
 
-            Pages.Page page = new Pages.Page()
+            Pages.Page defaultPage = new Pages.Page()
             {
                 Scenario = "",
                 LeftCharacter = defaultCharacter,
@@ -124,8 +124,8 @@ namespace KrkrNovelist.ViewModels
                 HasChangedBGM = false
             };
 
-            this.Page = new PageViewModel();
-            this.Paginator = new Pages.Paginator(this.Page.Data, page);
+            this.Page = new PageViewModel(defaultPage);
+            this.Paginator = new Pages.Paginator(this.Page.Data, defaultPage);
             this.Page.Data.Subscribe((x) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, x));
         }
 
