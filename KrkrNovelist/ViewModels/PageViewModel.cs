@@ -49,7 +49,7 @@ namespace KrkrNovelist.ViewModels
         public ReactiveProperty<SE> SE { get; set; } = new();
 
         public PageViewModel(
-            string scenario = default,
+            string scenario = "",
             Character leftCharacter = default,
             Character centerCharacter = default,
             Character rightCharacter = default,
