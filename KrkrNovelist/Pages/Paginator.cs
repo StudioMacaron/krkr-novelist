@@ -71,9 +71,9 @@ namespace KrkrNovelist.Pages
         {
             var page = Storage.Get(_currentIndex);
             PageViewModel newPage = new(
-                leftCharacter: page.LeftCharacter,
-                centerCharacter: page.CenterCharacter,
-                rightCharacter: page.RightCharacter,
+                leftCharacter: page.LeftCharacter.Data.Value,
+                centerCharacter: page.CenterCharacter.Data.Value,
+                rightCharacter: page.RightCharacter.Data.Value,
                 background: page.Background.Value
             );
             _currentIndex++;

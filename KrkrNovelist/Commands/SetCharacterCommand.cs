@@ -37,13 +37,13 @@ namespace KrkrNovelist.Commands
             switch (position)
             {
                 case SetCharacterParameter.LEFT:
-                    page.LeftCharacter = this._chara;
+                    page.LeftCharacter.Data.Value = this._chara;
                     break;
                 case SetCharacterParameter.CENTER:
-                    page.CenterCharacter = this._chara;
+                    page.CenterCharacter.Data.Value = this._chara;
                     break;
                 case SetCharacterParameter.RIGHT:
-                    page.RightCharacter = this._chara;
+                    page.RightCharacter.Data.Value = this._chara;
                     break;
             }
         }

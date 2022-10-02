@@ -23,7 +23,7 @@ using Reactive.Bindings.Extensions;
 using KrkrNovelist.Commands;
 using KrkrNovelist.IO;
 using KrkrNovelist.Models;
-using KrkrNovelist.ViewModels;
+using KrkrNovelist.ViewModels.PageMaterial;
 using KrkrNovelist.Pages;
 
 namespace KrkrNovelist.ViewModels
@@ -32,11 +32,11 @@ namespace KrkrNovelist.ViewModels
     {
         public ReactiveProperty<string> Scenario { get; set; } = new();
 
-        public Character LeftCharacter { get; set; }
+        public CharacterViewModel LeftCharacter { get; set; }
 
-        public Character CenterCharacter { get; set; }
+        public CharacterViewModel CenterCharacter { get; set; }
 
-        public Character RightCharacter { get; set; }
+        public CharacterViewModel RightCharacter { get; set; }
 
         public bool HasChangedBackground { get; set; }
 
@@ -59,9 +59,9 @@ namespace KrkrNovelist.ViewModels
         )
         {
             Scenario.Value = scenario;
-            LeftCharacter = leftCharacter;
-            CenterCharacter = centerCharacter;
-            RightCharacter = rightCharacter;
+            LeftCharacter = new CharacterViewModel(leftCharacter);
+            CenterCharacter = new CharacterViewModel(centerCharacter);
+            RightCharacter = new CharacterViewModel(rightCharacter);
             Background.Value = background;
             BGM.Value = bgm;
             SE.Value = se;
