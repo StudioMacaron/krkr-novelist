@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KrkrNovelist.Views"
+        xmlns:pm="clr-namespace:KrkrNovelist.Views.PageMaterial"
         mc:Ignorable="d"
         Title="{Binding Title.Value}" Height="576" Width="1024"
         ResizeMode="NoResize">
@@ -41,9 +42,9 @@
                             <Canvas.Background>
                                 <ImageBrush ImageSource="{Binding Page.Value.Background.Value.Path, TargetNullValue={x:Null}}" />
                             </Canvas.Background>
-                            <Image Source="{Binding Page.Value.LeftCharacter.Data.Value.Path}" Width="200" MaxHeight="360" Canvas.Left="50"/>
-                            <Image Source="{Binding Page.Value.CenterCharacter.Data.Value.Path}" Width="200" MaxHeight="360" Canvas.Left="220" />
-                            <Image Source="{Binding Page.Value.RightCharacter.Data.Value.Path}" Width="200" MaxHeight="360" Canvas.Left="390" />
+                            <pm:Character DataContext="{Binding Page.Value.LeftCharacter}" Canvas.Left="50" />
+                            <pm:Character DataContext="{Binding Page.Value.CenterCharacter}" Canvas.Left="220" />
+                            <pm:Character DataContext="{Binding Page.Value.RightCharacter}" Canvas.Left="390" />
                             <Image Source="/Resources/message.png" Width="640" Canvas.Top="230"  />
                             <TextBox
                                 Name="scenario"
