@@ -32,7 +32,8 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
-            this._vm.Page.Background.Value = this._bg;
+            PageViewModel page = _vm.Paginator.CurrentPage;
+            page.Background.Value = this._bg;
         }
     }
 }

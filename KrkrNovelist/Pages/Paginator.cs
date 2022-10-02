@@ -19,7 +19,13 @@ namespace KrkrNovelist.Pages
             get { return _currentIndex; }
         }
 
-        private PageViewModel _page;
+        private ReactiveProperty<PageViewModel> _page = new();
+
+        public PageViewModel CurrentPage
+        {
+            get { return Storage.Get(_currentIndex); }
+            set { Storage.Set(_currentIndex, value); }
+        }
 
         private Background _defaultBackground;
 
@@ -28,14 +34,14 @@ namespace KrkrNovelist.Pages
         public PageStorage Storage = new();
 
         public Paginator(
-            PageViewModel page,
+            ReactiveProperty<PageViewModel> page,
             Background background,
             Character character
         )
         {
             _currentIndex = 0;
             _page = page;
-            Storage.Add(page);
+            Storage.Add(page.Value);
 
             _defaultBackground = background;
             _defaultCharacter = character;
@@ -48,7 +54,7 @@ namespace KrkrNovelist.Pages
                 return;
             }
             _currentIndex++;
-            _page = Storage.Get(_currentIndex);
+            _page.Value = Storage.Get(_currentIndex);
         }
 
         public void MovePrev()
@@ -58,21 +64,21 @@ namespace KrkrNovelist.Pages
                 return;
             }
             _currentIndex--;
-            _page = Storage.Get(_currentIndex);
+            _page.Value = Storage.Get(_currentIndex);
         }
 
         public void Insert()
         {
             var currentPage = _page;
             PageViewModel newPage = new(
-                leftCharacter: currentPage.LeftCharacter,
-                centerCharacter: currentPage.CenterCharacter,
-                rightCharacter: currentPage.RightCharacter,
-                background: currentPage.Background.Value
+                leftCharacter: currentPage.Value.LeftCharacter,
+                centerCharacter: currentPage.Value.CenterCharacter,
+                rightCharacter: currentPage.Value.RightCharacter,
+                background: currentPage.Value.Background.Value
             );
             _currentIndex++;
             Storage.Insert(_currentIndex, newPage);
-            _page = newPage;
+            _page.Value = newPage;
         }
 
         public void Delete()
@@ -92,7 +98,7 @@ namespace KrkrNovelist.Pages
             {
                 _currentIndex--;
             }
-            _page = Storage.Get(_currentIndex);
+            _page.Value = Storage.Get(_currentIndex);
         }
     }
 }

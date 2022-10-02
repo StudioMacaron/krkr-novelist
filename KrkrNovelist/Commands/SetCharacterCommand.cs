@@ -32,17 +32,18 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
+            PageViewModel page = _vm.Paginator.CurrentPage;
             SetCharacterParameter position = (SetCharacterParameter)Enum.Parse(typeof(SetCharacterParameter), (string)parameter, true);
             switch (position)
             {
                 case SetCharacterParameter.LEFT:
-                    this._vm.Page.LeftCharacter = this._chara;
+                    page.LeftCharacter = this._chara;
                     break;
                 case SetCharacterParameter.CENTER:
-                    this._vm.Page.CenterCharacter = this._chara;
+                    page.CenterCharacter = this._chara;
                     break;
                 case SetCharacterParameter.RIGHT:
-                    this._vm.Page.RightCharacter = this._chara;
+                    page.RightCharacter = this._chara;
                     break;
             }
         }
