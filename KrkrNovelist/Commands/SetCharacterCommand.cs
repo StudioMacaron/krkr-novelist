@@ -32,34 +32,19 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
-            Page page = new Page()
-            {
-                Scenario = this._vm.Page.Scenario,
-                HasChangedBackground = this._vm.Page.HasChangedBackground,
-                HasChangedBGM = this._vm.Page.HasChangedBGM,
-                LeftCharacter = this._vm.Page.LeftCharacter,
-                CenterCharacter = this._vm.Page.CenterCharacter,
-                RightCharacter = this._vm.Page.RightCharacter,
-                Background = this._vm.Page.Background,
-                BGM = this._vm.Page.BGM,
-                SE = this._vm.Page.SE
-            };
-
             SetCharacterParameter position = (SetCharacterParameter)Enum.Parse(typeof(SetCharacterParameter), (string)parameter, true);
             switch (position)
             {
                 case SetCharacterParameter.LEFT:
-                    page.LeftCharacter = this._chara;
+                    this._vm.Page.LeftCharacter = this._chara;
                     break;
                 case SetCharacterParameter.CENTER:
-                    page.CenterCharacter = this._chara;
+                    this._vm.Page.CenterCharacter = this._chara;
                     break;
                 case SetCharacterParameter.RIGHT:
-                    page.RightCharacter = this._chara;
+                    this._vm.Page.RightCharacter = this._chara;
                     break;
             }
-
-            this._vm.Page = page;
         }
     }
 }
