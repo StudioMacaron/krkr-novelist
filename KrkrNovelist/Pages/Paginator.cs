@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Reactive.Bindings;
+using KrkrNovelist.ViewModels;
+using KrkrNovelist.Models;
 
 namespace KrkrNovelist.Pages
 {
@@ -17,17 +19,26 @@ namespace KrkrNovelist.Pages
             get { return _currentIndex; }
         }
 
-        private ReactiveProperty<Page> _page;
-        private Page _defaultPage;
+        private PageViewModel _page;
 
-        public PageStorage Storage = new PageStorage();
+        private Background _defaultBackground;
 
-        public Paginator(ReactiveProperty<Page> page, Page defaultPage)
+        private Character _defaultCharacter;
+
+        public PageStorage Storage = new();
+
+        public Paginator(
+            PageViewModel page,
+            Background background,
+            Character character
+        )
         {
             _currentIndex = 0;
             _page = page;
-            _defaultPage = defaultPage;
-            Storage.Add(page.Value);
+            Storage.Add(page);
+
+            _defaultBackground = background;
+            _defaultCharacter = character;
         }
 
         public void MoveNext()
@@ -37,7 +48,7 @@ namespace KrkrNovelist.Pages
                 return;
             }
             _currentIndex++;
-            _page.Value = Storage.Get(_currentIndex);
+            _page = Storage.Get(_currentIndex);
         }
 
         public void MovePrev()
@@ -47,23 +58,21 @@ namespace KrkrNovelist.Pages
                 return;
             }
             _currentIndex--;
-            _page.Value = Storage.Get(_currentIndex);
+            _page = Storage.Get(_currentIndex);
         }
 
         public void Insert()
         {
-            var currentPage = _page.Value;
-            Page newPage = new Page()
-            {
-                LeftCharacter = currentPage.LeftCharacter,
-                CenterCharacter = currentPage.CenterCharacter,
-                RightCharacter = currentPage.RightCharacter,
-                HasChangedBackground = currentPage.HasChangedBackground,
-                Background = currentPage.Background,
-            };
+            var currentPage = _page;
+            PageViewModel newPage = new(
+                leftCharacter: currentPage.LeftCharacter,
+                centerCharacter: currentPage.CenterCharacter,
+                rightCharacter: currentPage.RightCharacter,
+                background: currentPage.Background
+            );
             _currentIndex++;
             Storage.Insert(_currentIndex, newPage);
-            _page.Value = newPage;
+            _page = newPage;
         }
 
         public void Delete()
@@ -71,13 +80,19 @@ namespace KrkrNovelist.Pages
             Storage.Delete(_currentIndex);
             if (_currentIndex == 0)
             {
-                Storage.Add(_defaultPage);
+                PageViewModel newPage = new(
+                    leftCharacter: _defaultCharacter,
+                    centerCharacter: _defaultCharacter,
+                    rightCharacter: _defaultCharacter,
+                    background: _defaultBackground
+                );
+                Storage.Add(newPage);
             }
             else
             {
                 _currentIndex--;
             }
-            _page.Value = Storage.Get(_currentIndex);
+            _page = Storage.Get(_currentIndex);
         }
     }
 }
