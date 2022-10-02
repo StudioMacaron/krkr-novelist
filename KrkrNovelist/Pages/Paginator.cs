@@ -69,12 +69,12 @@ namespace KrkrNovelist.Pages
 
         public void Insert()
         {
-            var currentPage = _page;
+            var page = Storage.Get(_currentIndex);
             PageViewModel newPage = new(
-                leftCharacter: currentPage.Value.LeftCharacter,
-                centerCharacter: currentPage.Value.CenterCharacter,
-                rightCharacter: currentPage.Value.RightCharacter,
-                background: currentPage.Value.Background.Value
+                leftCharacter: page.LeftCharacter,
+                centerCharacter: page.CenterCharacter,
+                rightCharacter: page.RightCharacter,
+                background: page.Background.Value
             );
             _currentIndex++;
             Storage.Insert(_currentIndex, newPage);
