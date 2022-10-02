@@ -7,6 +7,7 @@ using Reactive.Bindings;
 using System.ComponentModel;
 using KrkrNovelist.Models;
 using KrkrNovelist.ViewModels.PageMaterial;
+using KrkrNovelist.Commands;
 
 namespace KrkrNovelist.ViewModels.PageMaterial
 {
@@ -14,9 +15,12 @@ namespace KrkrNovelist.ViewModels.PageMaterial
     {
         public ReactiveProperty<Character> Data { get; set; } = new();
 
+        public RemoveMaterialCommand<Character> RemoveCharacterCmd { get; set; }
+
         public CharacterViewModel(Character character)
         {
-            this.Data.Value = character;
+            Data.Value = character;
+            RemoveCharacterCmd = new RemoveMaterialCommand<Character>(this);
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
