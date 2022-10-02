@@ -68,7 +68,7 @@ namespace KrkrNovelist.Pages
                 leftCharacter: currentPage.LeftCharacter,
                 centerCharacter: currentPage.CenterCharacter,
                 rightCharacter: currentPage.RightCharacter,
-                background: currentPage.Background
+                background: currentPage.Background.Value
             );
             _currentIndex++;
             Storage.Insert(_currentIndex, newPage);

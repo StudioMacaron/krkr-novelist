@@ -113,20 +113,18 @@ namespace KrkrNovelist.ViewModels
                 Expression = ""
             };
 
-            Pages.Page defaultPage = new Pages.Page()
-            {
-                Scenario = "",
-                LeftCharacter = defaultCharacter,
-                CenterCharacter = defaultCharacter,
-                RightCharacter = defaultCharacter,
-                HasChangedBackground = true,
-                Background = defaultBackground,
-                HasChangedBGM = false
-            };
-
-            this.Page = new PageViewModel(defaultPage);
-            this.Paginator = new Pages.Paginator(this.Page.Data, defaultPage);
-            this.Page.Data.Subscribe((x) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, x));
+            this.Page = new PageViewModel(
+                leftCharacter: defaultCharacter,
+                centerCharacter: defaultCharacter,
+                rightCharacter: defaultCharacter,
+                background: defaultBackground
+            );
+            this.Paginator = new Pages.Paginator(
+                this.Page,
+                background: defaultBackground,
+                character: defaultCharacter
+            );
+            // this.Page.Data.Subscribe((x) => this.Paginator.Storage.Set(this.Paginator.CurrentIndex, x));
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

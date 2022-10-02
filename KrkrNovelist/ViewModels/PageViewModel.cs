@@ -30,11 +30,50 @@ namespace KrkrNovelist.ViewModels
 {
     public class PageViewModel : INotifyPropertyChanged
     {
-        public ReactiveProperty<Pages.Page> Data { get; set; } 
+        public ReactiveProperty<string> Scenario { get; set; }
 
-        public PageViewModel(Pages.Page defaultPage)
+        public Character LeftCharacter { get; set; }
+
+        public Character CenterCharacter { get; set; }
+
+        public Character RightCharacter { get; set; }
+
+        public bool HasChangedBackground { get; set; }
+
+        public ReactiveProperty<Background> Background { get; set; }
+
+        public bool HasChangedBGM { get; set; }
+
+        public ReactiveProperty<BGM> BGM { get; set; }
+
+        public ReactiveProperty<SE> SE { get; set; }
+
+        public PageViewModel(
+            string scenario = default,
+            Character leftCharacter = default,
+            Character centerCharacter = default,
+            Character rightCharacter = default,
+            Background background = default,
+            BGM bgm = default,
+            SE se = default
+        )
         {
-            this.Data = new ReactiveProperty<Pages.Page>(defaultPage);
+            Scenario.Value = scenario;
+            LeftCharacter = leftCharacter;
+            CenterCharacter = centerCharacter;
+            RightCharacter = rightCharacter;
+            Background.Value = background;
+            BGM.Value = bgm;
+            SE.Value = se;
+
+            if (string.IsNullOrEmpty(Background?.Value.Path))
+            {
+                HasChangedBackground = true;
+            }
+            if (!string.IsNullOrEmpty(BGM?.Value.Path))
+            {
+                HasChangedBGM = true;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
