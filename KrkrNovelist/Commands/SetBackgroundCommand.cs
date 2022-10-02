@@ -32,7 +32,7 @@ namespace KrkrNovelist.Commands
 
         public void Execute(object parameter)
         {
-            this._vm.Page.Background = this._bg;
+            this._vm.Page.Background.Value = this._bg;
         }
     }
 }

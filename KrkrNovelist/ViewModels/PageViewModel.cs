@@ -30,7 +30,7 @@ namespace KrkrNovelist.ViewModels
 {
     public class PageViewModel : INotifyPropertyChanged
     {
-        public ReactiveProperty<string> Scenario { get; set; }
+        public ReactiveProperty<string> Scenario { get; set; } = new();
 
         public Character LeftCharacter { get; set; }
 
@@ -40,13 +40,13 @@ namespace KrkrNovelist.ViewModels
 
         public bool HasChangedBackground { get; set; }
 
-        public ReactiveProperty<Background> Background { get; set; }
+        public ReactiveProperty<Background> Background { get; set; } = new();
 
         public bool HasChangedBGM { get; set; }
 
-        public ReactiveProperty<BGM> BGM { get; set; }
+        public ReactiveProperty<BGM> BGM { get; set; } = new();
 
-        public ReactiveProperty<SE> SE { get; set; }
+        public ReactiveProperty<SE> SE { get; set; } = new();
 
         public PageViewModel(
             string scenario = default,
@@ -66,11 +66,11 @@ namespace KrkrNovelist.ViewModels
             BGM.Value = bgm;
             SE.Value = se;
 
-            if (string.IsNullOrEmpty(Background?.Value.Path))
+            if (!string.IsNullOrEmpty(Background.Value?.Path))
             {
                 HasChangedBackground = true;
             }
-            if (!string.IsNullOrEmpty(BGM?.Value.Path))
+            if (!string.IsNullOrEmpty(BGM.Value?.Path))
             {
                 HasChangedBGM = true;
             }

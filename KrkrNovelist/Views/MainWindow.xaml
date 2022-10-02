@@ -39,7 +39,7 @@
                     <Grid Grid.Column="0">
                         <Canvas Width="640" Height="360">
                             <Canvas.Background>
-                                <ImageBrush ImageSource="{Binding Page.Background.Path, TargetNullValue={x:Null}}" />
+                                <ImageBrush ImageSource="{Binding Page.Background.Value.Path, TargetNullValue={x:Null}}" />
                             </Canvas.Background>
                             <Image Source="{Binding Page.LeftCharacter.Path}" Width="200" MaxHeight="360" Canvas.Left="50"/>
                             <Image Source="{Binding Page.CenterCharacter.Path}" Width="200" MaxHeight="360" Canvas.Left="220" />
@@ -47,7 +47,7 @@
                             <Image Source="/Resources/message.png" Width="640" Canvas.Top="230"  />
                             <TextBox
                                 Name="scenario"
-                                Text="{Binding Page.Scenario}"
+                                Text="{Binding Page.Scenario.Value}"
                                 TextWrapping="Wrap"
                                 AcceptsReturn="True"
                                 VerticalScrollBarVisibility="Hidden"
